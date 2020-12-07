@@ -20,10 +20,25 @@
  :description "This section supports markdown"
  :author "slimslenderslacks"
  :license "unknown"
- :iconUrl "https://raw.githubusercontent.com/cljs/logo/master/cljs.png"
+ :iconUrl "https://clojars.org/images/clojars-logo-tiny.png"
+ :parameters [{:secret {:name "deploy-token"
+                        :displayName "Deploy Token"
+                        :description "Clojars Deploy Token [(documentation)](https://clojars.org/tokens)"
+                        :lineStyle "single"
+                        :required true}
+               :string {:name "email"
+                        :displayName "Email"
+                        :description "the email address for your clojars account"
+                        :required true}
+               :stringArray {:name "groups"
+                             :description "Optionally restrict deployments to these groups.  Your account must have permission to write to these groups."
+                             :minRequired 0
+                             :pattern "^[\S+]$"
+                             :required false}}]
+ :capabilities {:provides [{:name "MavenRepository"
+                            :namespace "atomist"}]}
  :artifacts {:gcf [{:name "clojars-integration",
-  :runtime "nodejs10",
-  :memory 512, 
-  :timeout 60, 
-  :entryPoint "eventhandler"}]
-}}
+                    :runtime "nodejs10",
+                    :memory 512, 
+                    :timeout 60, 
+                    :entryPoint "eventhandler"}]}}

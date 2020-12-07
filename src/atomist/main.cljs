@@ -18,21 +18,13 @@
             [cljs.core.async :refer [<!] :refer-macros [go]]
             [goog.string.format]
             [clojure.data]
-            [atomist.cljs-log :as log]
             [atomist.github]))
-
-(defn custom-middleware [handler]
-  (fn [request]
-    (go
-      (log/info "do something useful here")
-      (<! (handler request)))))
 
 (defn ^:export handler
   [data sendreponse]
   (api/make-request
    data
    sendreponse
-   (-> (api/finished :message "----> event handler finished")
-       (custom-middleware)
+   (-> (api/finished)
        (api/log-event)
        (api/status))))

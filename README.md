@@ -2,12 +2,6 @@
 
 <!---atomist-skill-readme:start--->
 
-Explain a bit about what this skill does
-
-## Integrations
-
-List the Integrations
-
 <!---atomist-skill-readme:end--->
 
 ---
