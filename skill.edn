@@ -33,7 +33,7 @@
                :stringArray {:name "groups"
                              :description "Optionally restrict deployments to these groups.  Your account must have permission to write to these groups."
                              :minRequired 0
-                             :pattern "^[\S+]$"
+                             :pattern "^[\\S+]$"
                              :required false}}]
  :capabilities {:provides [{:name "MavenRepository"
                             :namespace "atomist"}]}
