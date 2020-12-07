@@ -3,6 +3,6 @@
 
 (def module-name "clojars-integration")
 (def path ".")
-(def version "0.1.2")
-(def tag "0.1.2")
-(def generated-at "2020-12-07T22:58:44Z")
+(def version "0.1.3")
+(def tag "0.1.3")
+(def generated-at "2020-12-07T23:10:22Z")
