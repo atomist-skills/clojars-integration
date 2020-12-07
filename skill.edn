@@ -1,1 +1,15 @@
-{:integration true}
+{:integration true
+ :namespace "atomist"
+ :homepageUrl "https://github.com/atomist-skills/clojars-integration"
+ :name "clojars-integration"
+ :displayName "clojars integration"
+ :description "This section supports markdown"
+ :author "slimslenderslacks"
+ :license "unknown"
+ :iconUrl "https://raw.githubusercontent.com/cljs/logo/master/cljs.png"
+ :artifacts {:gcf [{:name "clojars-integration",
+  :runtime "nodejs10",
+  :memory 512, 
+  :timeout 60, 
+  :entryPoint "eventhandler"}]
+}}
