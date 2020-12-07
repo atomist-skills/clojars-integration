@@ -25,12 +25,12 @@
                         :displayName "Deploy Token"
                         :description "Clojars Deploy Token [(documentation)](https://clojars.org/tokens)"
                         :lineStyle "single"
-                        :required true}
-               :string {:name "email"
+                        :required true}}
+              {:string {:name "email"
                         :displayName "Email"
                         :description "the email address for your clojars account"
-                        :required true}
-               :stringArray {:name "groups"
+                        :required true}}
+              {:stringArray {:name "groups"
                              :description "Optionally restrict deployments to these groups.  Your account must have permission to write to these groups."
                              :minRequired 0
                              :pattern "^[\\S+]$"
@@ -39,6 +39,6 @@
                             :namespace "atomist"}]}
  :artifacts {:gcf [{:name "clojars-integration",
                     :runtime "nodejs10",
-                    :memory 512, 
-                    :timeout 60, 
+                    :memory 512,
+                    :timeout 60,
                     :entryPoint "eventhandler"}]}}
