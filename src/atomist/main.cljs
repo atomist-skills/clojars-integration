@@ -26,7 +26,8 @@
       (when (= "config-change.edn" (-> request :subscription :name))
         (let [params (->> request :subscription :result (map first) (into {}))]
           (<! (api/transact request [{:schema/entity-type :maven/repository
-                                      :maven.repository/url "https://clojars.org"
+                                      :maven.repository/url "https://repo.clojars.org"
+                                      :maven.repository/username (get params "email")
                                       :maven.repository/secret (get params "deploy-token")
                                       :atomist.skill.configuration.capability.provider/name "MavenRepository"
                                       :atomist.skill.configuration.capability.provider/namespace "atomist"
