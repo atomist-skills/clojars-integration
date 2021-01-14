@@ -14,11 +14,23 @@
 
 (ns atomist.main
   (:require [atomist.api :as api]
-            [cljs.pprint :refer [pprint]]
             [cljs.core.async :refer [<!] :refer-macros [go]]
             [goog.string.format]
             [clojure.data]
             [atomist.github]))
+
+(defn transact-config
+  [handler]
+  (fn [request]
+    (go
+      (when (= "config-change.edn" (-> request :subscription :name))
+        (let [params (->> request :subscription :result (map first) (into {}))]
+          (<! (api/transact request [{:schema/entity-type :maven/repository
+                                      :maven.repository/url "https://clojars.org"
+                                      :maven.repository/secret (get params "deploy-token")
+                                      :atomist.skill.configuration.capability.provider/name "MavenRepository"
+                                      :atomist.skill.configuration.capability.provider/namespace "atomist"}]))))
+      (<! (handler request)))))
 
 (defn ^:export handler
   [data sendreponse]
@@ -26,5 +38,6 @@
    data
    sendreponse
    (-> (api/finished)
+       (transact-config)
        (api/log-event)
        (api/status))))
