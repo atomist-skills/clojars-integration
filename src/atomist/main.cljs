@@ -29,7 +29,8 @@
                                       :maven.repository/url "https://clojars.org"
                                       :maven.repository/secret (get params "deploy-token")
                                       :atomist.skill.configuration.capability.provider/name "MavenRepository"
-                                      :atomist.skill.configuration.capability.provider/namespace "atomist"}]))))
+                                      :atomist.skill.configuration.capability.provider/namespace "atomist"
+                                      :maven.repoository/repository-id "clojars"}]))))
       (<! (handler request)))))
 
 (defn ^:export handler
