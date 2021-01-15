@@ -29,12 +29,7 @@
               {:string {:name "email"
                         :displayName "Email"
                         :description "the email address for your clojars account"
-                        :required true}}
-              {:stringArray {:name "groups"
-                             :description "Optionally restrict deployments to these groups.  Your account must have permission to write to these groups."
-                             :minRequired 0
-                             :pattern "^[\\S+]$"
-                             :required false}}]
+                        :required true}}]
  :capabilities {:provides [{:name "MavenRepository"
                             :namespace "atomist"}]}
  :artifacts {:gcf [{:name "clojars-integration",
